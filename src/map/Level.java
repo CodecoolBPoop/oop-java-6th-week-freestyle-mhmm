@@ -12,7 +12,5 @@ public abstract class Level {
         map[movingCharacter.getX()][movingCharacter.getY()] = null;
         map[toX][toY] = movingCharacter;
 
-        if map[toX][toY] == Slime
-
     }
 }

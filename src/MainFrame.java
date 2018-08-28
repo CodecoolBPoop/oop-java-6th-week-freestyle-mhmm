@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 
 public class MainFrame{
 
@@ -7,6 +9,7 @@ public class MainFrame{
 
     public MainFrame()
     {
+        gamepanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);

@@ -1,3 +1,5 @@
+import GameObjects.GameObject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,8 +20,6 @@ public class GamePanel extends JPanel implements Runnable{
     {
         setFocusable(true);
         upAction = new UpAction();
-        t = new Thread(this);
-        t.run();
         downAction = new DownAction();
         leftAction = new LeftAction();
         rightAction = new RightAction();
@@ -35,6 +35,9 @@ public class GamePanel extends JPanel implements Runnable{
 
         this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightMotion");
         this.getActionMap().put("rightMotion",rightAction);
+
+        t = new Thread(this);
+        t.run();
 
     }
     public void run()
@@ -58,17 +61,27 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
     }
-    public void paintComponent(Graphics g)
+    public void paintBoard(Graphics g, GameObject[][] gameObjects)
     {
         super.paintComponent(g);
+        for (GameObject [] row: gameObjects) {
+            for (GameObject gameObject: row) {
+                switch (GameObject.getType()) {
+                    case
+                }
+            }
+        }
+/*        super.paintComponent(g);
         g.drawRect(rectX, rectY, 50, 50);
-        loop();
+        loop();*/
+
     }
+
     static class UpAction extends AbstractAction
     {
         public void actionPerformed(ActionEvent e)
         {
-            rectY -= 50;
+            if (rectY > 0) {rectY -= 50;}
         }
     }
 
@@ -76,7 +89,7 @@ public class GamePanel extends JPanel implements Runnable{
     {
         public void actionPerformed(ActionEvent e)
         {
-            rectY += 50;
+            if (rectY < 450) {rectY += 50;}
         }
     }
 
@@ -84,15 +97,14 @@ public class GamePanel extends JPanel implements Runnable{
     {
         public void actionPerformed(ActionEvent e)
         {
-            rectX -= 50;
-        }
+            if (rectX > 0) {rectX -= 50;}        }
     }
 
     static class RightAction extends AbstractAction
     {
         public void actionPerformed(ActionEvent e)
         {
-            rectX += 50;
+            if (rectX < 450) {rectX += 50;}
         }
     }
 }

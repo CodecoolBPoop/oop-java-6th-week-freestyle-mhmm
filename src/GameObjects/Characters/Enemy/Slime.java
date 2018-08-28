@@ -1,5 +1,4 @@
 package GameObjects.Characters.Enemy;
 
-public class Player extends Character {
-
+public class Slime extends Enemy {
 }

@@ -1,6 +1,8 @@
-package Characters;
+package GameObjects.Characters.Enemy;
 
-public abstract class Character {
+import GameObjects.GameObject;
+
+public abstract class Character extends GameObject {
     int hitPoint;
     int damage;
     int X;

@@ -6,5 +6,6 @@ public class LevelOne extends Level{
         HEIGHT = 8;
         WIDTH = 8;
         this.map = new Character[HEIGHT][WIDTH];
+        this.map[][]
     }
 }

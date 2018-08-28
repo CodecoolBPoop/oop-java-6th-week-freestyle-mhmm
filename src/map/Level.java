@@ -1,8 +1,9 @@
 package map;
-import Characters.Character;
+import GameObjects.Characters.Enemy.Character;
+import GameObjects.GameObject;
 
 public abstract class Level {
-    Character[][] map;
+    GameObject[][] map;
     int WIDTH;
     int HEIGHT;
 
@@ -10,6 +11,8 @@ public abstract class Level {
 
         map[movingCharacter.getX()][movingCharacter.getY()] = null;
         map[toX][toY] = movingCharacter;
+
+        if map[toX][toY] == Slime
 
     }
 }

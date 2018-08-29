@@ -9,9 +9,7 @@ public abstract class Character extends GameObject {
     int X;
     int Y;
 
-    public GameObjectType getType(){
-        return type;
-    }
+
 
     public int getX() {
         return X;

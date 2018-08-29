@@ -1,21 +1,26 @@
 import GameObjects.GameObject;
-import GameObjects.GameObjectType;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class GamePanel extends JPanel implements Runnable{
 
-    boolean isRunning = true;
-    Thread t;
-    static int rectX = 250;
-    static int rectY = 250;
-    Action upAction;
-    Action downAction;
-    Action leftAction;
-    Action rightAction;
+    private boolean isRunning = true;
+    private Thread t;
+    private static int characterPositionX;
+    private static int characterPositionY;
+    private Action upAction;
+    private Action downAction;
+    private Action leftAction;
+    private Action rightAction;
+    private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
+    private GameObject[][] gameObjects;
 
     public GamePanel()
     {
@@ -62,27 +67,51 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
     }
-    public void paintBoard(Graphics g, GameObject[][] gameObjects)
+
+    public void paintComponent(Graphics g)
     {
-        super.paintComponent(g);
+        BufferedImage playerImage = null;
+        try  {
+            playerImage  = ImageIO.read(new File(IMG_DIR_PATH + "/character.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        BufferedImage forestImage = null;
+        try  {
+            forestImage  = ImageIO.read(new File(IMG_DIR_PATH + "/forest.png"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+
+
         for (GameObject [] row: gameObjects) {
             for (GameObject gameObject: row) {
                 switch (gameObject.getType()) {
-                    case PLAYER:
+                    case PLAYER: {
+                        characterPositionX = gameObject.getX();
+                        characterPositionY = gameObject.getY();
+                        super.paintComponent(g);
+                        g.drawImage(playerImage, characterPositionX, characterPositionY, 50, 50, null);
+                        loop();
+                    }
+                    case FOREST: {
+                        super.paintComponent(g);
+                        g.drawImage(forestImage, gameObject.getX(), gameObject.getY(), 50, 50, null);
+                        loop();
+                    }
                 }
             }
         }
-/*        super.paintComponent(g);
-        g.drawRect(rectX, rectY, 50, 50);
-        loop();*/
-
     }
 
     static class UpAction extends AbstractAction
     {
         public void actionPerformed(ActionEvent e)
         {
-            if (rectY > 0) {rectY -= 50;}
+            if (characterPositionY > 0) {
+                characterPositionY -= 50;}
         }
     }
 
@@ -90,7 +119,8 @@ public class GamePanel extends JPanel implements Runnable{
     {
         public void actionPerformed(ActionEvent e)
         {
-            if (rectY < 450) {rectY += 50;}
+            if (characterPositionY < 450) {
+                characterPositionY += 50;}
         }
     }
 
@@ -98,14 +128,16 @@ public class GamePanel extends JPanel implements Runnable{
     {
         public void actionPerformed(ActionEvent e)
         {
-            if (rectX > 0) {rectX -= 50;}        }
+            if (characterPositionX > 0) {
+                characterPositionX -= 50;}        }
     }
 
     static class RightAction extends AbstractAction
     {
         public void actionPerformed(ActionEvent e)
         {
-            if (rectX < 450) {rectX += 50;}
+            if (characterPositionX < 450) {
+                characterPositionX += 50;}
         }
     }
 }

@@ -8,7 +8,17 @@ public class Player extends Character {
     private Armor fullBody;
     private Weapon weapon;
 
+    public Player(int X, int Y, int hitPoint, int damage) {
+        super(X, Y, 30, 0);
+        strength = 3;
+        agility = 3;
+        intelligence = 3;
+    }
+
     public void setFullBody(Armor fullBody) {
+        if (this.fullBody != null)
+            this.hitPoint -= this.fullBody.getHealthIncrease();
+        this.hitPoint += fullBody.getHealthIncrease();
         this.fullBody = fullBody;
     }
 
@@ -17,6 +27,8 @@ public class Player extends Character {
     }
 
     public int attack(){
+        if (this.weapon == null)
+            return strength;
         return this.weapon.dealDamage() + strength;
     }
 

@@ -12,6 +12,12 @@ public abstract class Character extends GameObject {
     protected int damage;
     List<Item> items = new ArrayList<>();
 
+    public Character(int X, int Y, int hitPoint, int damage) {
+        super(X, Y);
+        this.hitPoint = hitPoint;
+        this.damage = damage;
+    }
+
     public void takeDamage(int damageAmount){
         this.hitPoint -= damageAmount;
     }

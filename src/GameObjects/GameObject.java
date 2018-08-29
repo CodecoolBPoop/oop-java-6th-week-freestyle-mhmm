@@ -5,6 +5,10 @@ public class GameObject {
     protected int X;
     protected int Y;
 
+    public GameObject(int X, int Y){
+        this.X = X;
+        this.Y = Y;
+    }
     public int getX() {
         return X;
     }

@@ -1,9 +1,9 @@
 package GameObjects;
 
 public class GameObject {
-    private GameObjectType type;
-    int X;
-    int Y;
+    protected GameObjectType type;
+    protected int X;
+    protected int Y;
 
     public int getX() {
         return X;

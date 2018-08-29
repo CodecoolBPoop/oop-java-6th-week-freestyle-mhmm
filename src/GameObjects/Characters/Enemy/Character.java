@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Character extends GameObject {
-    GameObjectType type;
-
     int hitPoint;
     int damage;
     List<Item> items = new ArrayList<>();

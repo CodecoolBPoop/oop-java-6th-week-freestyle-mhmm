@@ -11,7 +11,7 @@ public class ItemsDataDao implements GameObjectDAO {
 
     private static List<Item> itemList = new ArrayList<>();
 
-    private static ItemsDataDao instance;
+    private static ItemsDataDao instance = null;
 
     private ItemsDataDao() {}
 
@@ -32,8 +32,7 @@ public class ItemsDataDao implements GameObjectDAO {
 
     }
 
-    @Override
-    public GameObject findById(int id) {
+    public Item findById(int id) {
         return itemList.stream()
                 .filter(item -> item.getId() == id)
                 .findFirst().orElse(null);

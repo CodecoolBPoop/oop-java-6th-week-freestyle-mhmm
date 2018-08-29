@@ -1,6 +1,8 @@
 package GameObjects.Items;
 
 
+import GameObjects.Characters.Enemy.Character;
+
 import java.util.Random;
 
 public class Weapon extends Item {

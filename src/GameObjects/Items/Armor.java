@@ -9,12 +9,12 @@ public class Armor extends Item {
         this.healthIncrease = healthIncrease;
     }
 
-    public int getHealthIncrease() {
+    int getHealthIncrease() {
         return healthIncrease;
     }
 
     @Override
-    void assignToCharacter(Character character) {
-
+    void assignToCharacter(GameObjects.Characters.Enemy.Character character) {
+        character.addItemToInventory(this);
     }
 }

@@ -1,6 +1,5 @@
 package GameObjects.Items;
 
-
 import java.util.Random;
 
 public class Weapon extends Item {
@@ -16,11 +15,14 @@ public class Weapon extends Item {
 
     public int dealDamage() {
         Random random = new Random();
-        return random.nextInt((this.maxDamage - this.minDamage) + this.minDamage);
+        return random.nextInt(this.maxDamage - this.minDamage) + this.minDamage;
     }
 
-    @Override
-    void assignToCharacter(Character character) {
+    public int getMinDamage() {
+        return this.minDamage;
+    }
 
+    public int getMaxDamage() {
+        return this.maxDamage;
     }
 }

@@ -1,4 +1,4 @@
-package GameObjects.Characters;
+package GameObjects.Characters.Enemy;
 
 import GameObjects.GameObject;
 import GameObjects.GameObjectType;
@@ -6,11 +6,13 @@ import GameObjects.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Character extends GameObject {
     protected int hitPoint;
     protected int damage;
     List<Item> items = new ArrayList<>();
+    GameObjectType type;
 
     public Character(int X, int Y, int hitPoint, int damage) {
         super(X, Y);
@@ -22,11 +24,29 @@ public abstract class Character extends GameObject {
         this.hitPoint -= damageAmount;
     }
 
+    public GameObjectType getType(){
+        return type;
+    }
+
     public int getDamage() {
         return damage;
     }
 
     public int getHitPoint() {
         return hitPoint;
+    }
+
+    public void addItemToInventory(Item item) {
+        items.add(item);
+    }
+
+    public Item getItemById(int id) {
+        return items.stream()
+                .filter(item -> item.getId() == id)
+                .findFirst().orElse(null);
+    }
+
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
     }
 }

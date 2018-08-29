@@ -20,6 +20,7 @@ public class Player extends Character {
             this.hitPoint -= this.fullBody.getHealthIncrease();
         this.hitPoint += fullBody.getHealthIncrease();
         this.fullBody = fullBody;
+        this.setHitPoint(this.hitPoint + fullBody.getHealthIncrease());
     }
 
     public void setWeapon(Weapon weapon) {

@@ -1,5 +1,5 @@
 package map;
-import GameObjects.Characters.Enemy.Character;
+import GameObjects.Characters.Character;
 import GameObjects.GameObject;
 
 public abstract class Level {

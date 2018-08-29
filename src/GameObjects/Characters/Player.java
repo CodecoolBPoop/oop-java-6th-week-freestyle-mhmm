@@ -1,7 +1,5 @@
-package GameObjects.Characters.Enemy;
+package GameObjects.Characters;
 import GameObjects.Items.*;
-
-import java.util.Random;
 
 public class Player extends Character {
     private int strength;

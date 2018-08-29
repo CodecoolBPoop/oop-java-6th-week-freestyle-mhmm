@@ -1,7 +1,5 @@
-package GameObjects.Characters.Enemy.Enemy;
-
-import GameObjects.Characters.Enemy.Character;
-import GameObjects.*;
+package GameObjects.Characters.Enemy;
+import GameObjects.Characters.Character;
 import static GameObjects.GameObjectType.ENEMY;
 
 public abstract class Enemy extends Character {

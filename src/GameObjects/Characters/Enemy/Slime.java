@@ -1,7 +1,7 @@
-package GameObjects.Characters.Enemy.Enemy;
+package GameObjects.Characters.Enemy;
 
 public class Slime extends Enemy {
-    Slime() {
+    public Slime() {
         super(10,1);
     }
 

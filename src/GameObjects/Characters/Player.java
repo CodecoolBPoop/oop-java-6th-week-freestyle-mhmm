@@ -10,7 +10,7 @@ public class Player extends Character {
     private Weapon weapon;
 
 
-    public Player(int X, int Y, int hitPoint, int damage) {
+    public Player(int X, int Y) {
         super(X, Y, 30, 0);
         this.type = GameObjectType.PLAYER;
         strength = 3;

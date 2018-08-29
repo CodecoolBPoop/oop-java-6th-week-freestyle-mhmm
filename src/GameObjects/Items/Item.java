@@ -11,6 +11,7 @@ public abstract class Item extends GameObject {
     private String name;
 
     Item(String name, int value) {
+        super(0,0);
         this.value = value;
         this.name = name;
         this.id = nextId++;

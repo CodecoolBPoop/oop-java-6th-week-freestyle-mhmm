@@ -1,6 +1,9 @@
 package GameObjects.Items;
 
-public abstract class Item {
+import GameObjects.Characters.Character;
+import GameObjects.GameObject;
+
+public abstract class Item extends GameObject {
 
     private int value;
     private int id;
@@ -8,12 +11,15 @@ public abstract class Item {
     private String name;
 
     Item(String name, int value) {
+        super(0,0);
         this.value = value;
         this.name = name;
         this.id = nextId++;
     }
 
-    abstract void assignToCharacter(Character character);
+    void assignToCharacter(Character character) {
+        character.addItemToInventory(this);
+    };
 
     public int getValue() {
         return value;
@@ -23,7 +29,7 @@ public abstract class Item {
         return id;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 }

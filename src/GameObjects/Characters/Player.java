@@ -1,4 +1,5 @@
 package GameObjects.Characters;
+import GameObjects.GameObjectType;
 import GameObjects.Items.*;
 
 public class Player extends Character {
@@ -8,8 +9,21 @@ public class Player extends Character {
     private Armor fullBody;
     private Weapon weapon;
 
+
+    public Player(int X, int Y) {
+        super(X, Y, 30, 0);
+        this.type = GameObjectType.PLAYER;
+        strength = 3;
+        agility = 3;
+        intelligence = 3;
+    }
+
     public void setFullBody(Armor fullBody) {
+        if (this.fullBody != null)
+            this.hitPoint -= this.fullBody.getHealthIncrease();
+        this.hitPoint += fullBody.getHealthIncrease();
         this.fullBody = fullBody;
+        this.setHitPoint(this.hitPoint + fullBody.getHealthIncrease());
     }
 
     public void setWeapon(Weapon weapon) {
@@ -17,6 +31,8 @@ public class Player extends Character {
     }
 
     public int attack(){
+        if (this.weapon == null)
+            return strength;
         return this.weapon.dealDamage() + strength;
     }
 

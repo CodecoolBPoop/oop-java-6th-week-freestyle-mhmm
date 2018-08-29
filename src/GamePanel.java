@@ -73,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void paintComponent(Graphics g) {
         //filling our 2d list
-        Player player = new Player();
+        Player player = new Player(1,1);
         Level levelOne = new LevelOne(player);
         gameObjects = ((LevelOne) levelOne).getLevel();
 
@@ -93,6 +93,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
         super.paintComponent(g);
 
+        //looping trough the 2d list and printing corresponding images
         for (int i= 0; i < gameObjects.length; i++) {
             for (int j= 0; j < gameObjects[i].length; j++) {
                 switch (gameObjects[i][j].getType()) {
@@ -104,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
                         break;
                     case PLAYER:
                         g.drawImage(playerImage, i*50, j*50, 50, 50, null);
+                        loop();
                         break;
                     case LOOT:
                         g.drawImage(lootImage, i*50, j*50, 50, 50, null);
@@ -114,39 +116,6 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         }
-
-        //looping trough list and printing corresponding images
-/*        for (GameObject [] row: gameObjects) {
-            for (GameObject gameObject: row) {
-                if (gameObject != null) {
-                    switch (gameObject.getType()) {
-                        case PLAYER: {
-                        characterPositionX = gameObject.getX();
-                        characterPositionY = gameObject.getY();
-                        super.paintComponent(g);
-                        g.drawImage(playerImage, characterPositionX, characterPositionY, 50, 50, null);
-                        loop();
-                            break;
-                        }
-                        case FOREST: {
-                            super.paintComponent(g);
-                            g.drawImage(forestImage, gameObject.getX()*50, gameObject.getY()*50, 50, 50, null);
-                            break;
-                        }
-                        case LOOT: {
-                            //super.paintComponent(g);
-                            //g.drawImage(lootImage, gameObject.getX()*50, gameObject.getY()*50, 50, 50, null);
-                            break;
-                        }
-                        case ENEMY: {
-                            //super.paintComponent(g);
-                            //g.drawImage(enemyImage, gameObject.getX()*50, gameObject.getY()*50, 50, 50, null);
-                            break;
-                        }
-                    }
-                }
-            }
-        }*/
     }
 
     //arrow controls

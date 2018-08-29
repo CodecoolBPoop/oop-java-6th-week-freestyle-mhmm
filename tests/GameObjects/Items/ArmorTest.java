@@ -36,12 +36,4 @@ class ArmorTest {
         armor.assignToCharacter(player);
         assertNotNull(player.getItemById(armor.getId()));
     }
-
-    @Test
-    void testArmorAssignToCharacterHealthIncrease() {
-        Player player = new Player();
-        player.setHitPoint(10);
-        armor.assignToCharacter(player);
-        assertEquals(player.getHitPoint(), 60);
-    }
 }

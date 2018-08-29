@@ -12,6 +12,7 @@ public class Player extends Character {
 
     public void setFullBody(Armor fullBody) {
         this.fullBody = fullBody;
+        this.setHitPoint(this.hitPoint + fullBody.getHealthIncrease());
     }
 
     public void setWeapon(Weapon weapon) {

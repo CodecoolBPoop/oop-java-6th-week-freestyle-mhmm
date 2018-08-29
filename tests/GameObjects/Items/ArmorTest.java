@@ -1,6 +1,6 @@
 package GameObjects.Items;
 
-import GameObjects.CharactersFukin.Enemy.Player;
+import GameObjects.Characters.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +32,7 @@ class ArmorTest {
 
     @Test
     void testArmorAssignToCharacter() {
-        Player player = new Player();
+        Player player = new Player(0, 0);
         armor.assignToCharacter(player);
         assertNotNull(player.getItemById(armor.getId()));
     }

@@ -1,4 +1,5 @@
 package GameObjects.Characters.Enemy;
+import GameObjects.Items.*;
 
 import java.util.Random;
 
@@ -9,7 +10,15 @@ public class Player extends Character {
     private Armor fullBody;
     private Weapon weapon;
 
-    public void attack(){
+    public void setFullBody(Armor fullBody) {
+        this.fullBody = fullBody;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public int attack(){
         return this.weapon.dealDamage() + strength;
     }
 

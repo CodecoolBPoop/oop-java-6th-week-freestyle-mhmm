@@ -13,7 +13,7 @@ public class MainFrame{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setSize(500,500);
+        frame.setSize(1000,1000);
         frame.setLocationRelativeTo(null);
         frame.add(gamepanel);
         gamepanel.requestFocusInWindow();

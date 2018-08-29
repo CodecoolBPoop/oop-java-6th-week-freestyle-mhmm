@@ -1,6 +1,6 @@
 package map;
 
-import GameObjects.Characters.Enemy.Player;
+import GameObjects.Characters.Player;
 import GameObjects.GameObject;
 
 public class LevelOne extends Level{

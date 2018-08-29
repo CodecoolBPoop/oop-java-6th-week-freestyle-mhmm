@@ -1,4 +1,4 @@
-package GameObjects.Characters.Enemy;
+package GameObjects.Characters;
 import GameObjects.Items.*;
 
 import java.util.Random;

@@ -1,4 +1,7 @@
+import GameObjects.Characters.Player;
 import GameObjects.GameObject;
+import map.Level;
+import map.LevelOne;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
     private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
     private GameObject[][] gameObjects;
 
-    public GamePanel()
+    GamePanel()
     {
         setFocusable(true);
         upAction = new UpAction();
@@ -68,8 +71,13 @@ public class GamePanel extends JPanel implements Runnable{
 
     }
 
-    public void paintComponent(Graphics g)
-    {
+    public void paintComponent(Graphics g) {
+        //filling our 2d list
+        Player player = new Player();
+        Level levelOne = new LevelOne(player);
+        gameObjects = ((LevelOne) levelOne).getLevel();
+
+        //creating images
         BufferedImage playerImage = null;
         BufferedImage forestImage = null;
         BufferedImage lootImage = null;
@@ -84,6 +92,7 @@ public class GamePanel extends JPanel implements Runnable{
             ex.printStackTrace();
         }
 
+        //looping trough list and printing corresponding images
         for (GameObject [] row: gameObjects) {
             for (GameObject gameObject: row) {
                 switch (gameObject.getType()) {
@@ -114,6 +123,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
 
+    //arrow controls
     static class UpAction extends AbstractAction
     {
         public void actionPerformed(ActionEvent e)

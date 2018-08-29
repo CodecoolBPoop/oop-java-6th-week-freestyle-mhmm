@@ -1,7 +1,8 @@
 package GameObjects.Characters.Enemy.Enemy;
 
 import GameObjects.Characters.Enemy.Character;
-import GameObjects.GameObjectType;
+import GameObjects.*;
+import static GameObjects.GameObjectType.ENEMY;
 
 public abstract class Enemy extends Character {
     public Enemy(int hitPoints, int damage){

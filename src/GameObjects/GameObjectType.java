@@ -2,5 +2,6 @@ package GameObjects;
 
 public enum GameObjectType {
     PLAYER,
-    SLIME;
+    SLIME,
+    ENEMY;
 }

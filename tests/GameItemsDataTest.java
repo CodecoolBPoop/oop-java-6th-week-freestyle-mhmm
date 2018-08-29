@@ -10,14 +10,14 @@ class GameItemsDataTest {
 
     @Test
     void testGetInstanceIsNotNull() {
-        assertNotNull(GameItemsData.getInstance());
+        assertNotNull(ItemsDataDao.getInstance());
     }
 
     @Test
     void testAddItem() {
         Armor armor = new Armor("Sacred Armor", 80, 40);
-        GameItemsData.getInstance().addItem(armor);
-        assertNotNull(GameItemsData.getInstance().getItemById(armor.getId()));
+        ItemsDataDao.getInstance().addItem(armor);
+        assertNotNull(ItemsDataDao.getInstance().findById(armor.getId()));
     }
 
     @RepeatedTest(20)
@@ -30,7 +30,7 @@ class GameItemsDataTest {
         Weapon weapon2 = new Weapon("Colossus Blade", 40, 40, 30);
         Weapon weapon3 = new Weapon("Hydra Bow", 40, 40, 30);
 
-        GameItemsData itemsData = GameItemsData.getInstance();
+        ItemsDataDao itemsData = ItemsDataDao.getInstance();
         itemsData.addItem(armor1);
         itemsData.addItem(armor2);
         itemsData.addItem(armor3);
@@ -39,8 +39,8 @@ class GameItemsDataTest {
         itemsData.addItem(weapon2);
         itemsData.addItem(weapon3);
 
-        Item randomItem = itemsData.getRandomItem();
-        System.out.println(randomItem.getName());
+        Item randomItem = (itemsData.getRandom() instanceof Item) ? (Item) itemsData.getRandom() : null;
         assertNotNull(randomItem);
+        System.out.println(randomItem.getName());
     }
 }

@@ -5,7 +5,7 @@ public class Config {
 
     public static void initialize() {
 
-        GameItemsData itemsData = GameItemsData.getInstance();
+        ItemsDataDao itemsData = ItemsDataDao.getInstance();
 
         Armor armor1 = new Armor("Sacred Armor", 80, 40);
         Armor armor2 = new Armor("Shadow Plate", 80, 40);

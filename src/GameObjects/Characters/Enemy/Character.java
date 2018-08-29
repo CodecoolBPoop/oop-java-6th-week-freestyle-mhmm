@@ -40,4 +40,8 @@ public abstract class Character extends GameObject {
                 .filter(item -> item.getId() == id)
                 .findFirst().orElse(null);
     }
+
+    public void setHitPoint(int hitPoint) {
+        this.hitPoint = hitPoint;
+    }
 }

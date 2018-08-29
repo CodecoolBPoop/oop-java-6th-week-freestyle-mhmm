@@ -16,5 +16,6 @@ public class Armor extends Item {
     @Override
     void assignToCharacter(GameObjects.Characters.Enemy.Character character) {
         character.addItemToInventory(this);
+        character.setHitPoint(character.getHitPoint() + this.healthIncrease);
     }
 }

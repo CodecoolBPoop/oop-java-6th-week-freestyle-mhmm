@@ -1,4 +1,5 @@
 package GameObjects.Characters;
+import GameObjects.GameObjectType;
 import GameObjects.Items.*;
 
 public class Player extends Character {
@@ -8,8 +9,10 @@ public class Player extends Character {
     private Armor fullBody;
     private Weapon weapon;
 
+
     public Player(int X, int Y, int hitPoint, int damage) {
         super(X, Y, 30, 0);
+        this.type = GameObjectType.PLAYER;
         strength = 3;
         agility = 3;
         intelligence = 3;

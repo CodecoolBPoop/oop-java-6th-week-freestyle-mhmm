@@ -1,5 +1,6 @@
 package GameObjects.Items;
 
+import GameObjects.Characters.Character;
 import GameObjects.GameObject;
 
 public abstract class Item extends GameObject {
@@ -15,7 +16,7 @@ public abstract class Item extends GameObject {
         this.id = nextId++;
     }
 
-    void assignToCharacter(GameObjects.Characters.Enemy.Character character) {
+    void assignToCharacter(Character character) {
         character.addItemToInventory(this);
     };
 

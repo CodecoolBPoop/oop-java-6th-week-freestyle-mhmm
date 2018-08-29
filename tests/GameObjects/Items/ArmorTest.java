@@ -1,6 +1,6 @@
 package GameObjects.Items;
 
-import GameObjects.Characters.Enemy.Player;
+import GameObjects.CharactersFukin.Enemy.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

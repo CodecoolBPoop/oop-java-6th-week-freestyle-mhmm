@@ -1,4 +1,4 @@
-package GameObjects.Characters.Enemy;
+package GameObjects.Characters;
 
 import GameObjects.GameObject;
 import GameObjects.GameObjectType;
@@ -6,13 +6,12 @@ import GameObjects.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class Character extends GameObject {
     protected int hitPoint;
     protected int damage;
     List<Item> items = new ArrayList<>();
-    GameObjectType type;
+    protected GameObjectType type;
 
     public Character(int X, int Y, int hitPoint, int damage) {
         super(X, Y);

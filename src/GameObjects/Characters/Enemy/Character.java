@@ -10,6 +10,10 @@ public abstract class Character extends GameObject {
     int X;
     int Y;
 
+    public void takeDamage(int damageAmount){
+        this.hitPoint -= damageAmount;
+    }
+
     public GameObjectType getType(){
         return type;
     }

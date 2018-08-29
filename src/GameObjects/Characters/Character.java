@@ -16,10 +16,6 @@ public abstract class Character extends GameObject {
         this.hitPoint -= damageAmount;
     }
 
-    public GameObjectType getType(){
-        return type;
-    }
-
     public int getDamage() {
         return damage;
     }

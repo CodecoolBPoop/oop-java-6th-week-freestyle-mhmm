@@ -71,20 +71,18 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g)
     {
         BufferedImage playerImage = null;
+        BufferedImage forestImage = null;
+        BufferedImage lootImage = null;
+        BufferedImage enemyImage = null;
+
         try  {
             playerImage  = ImageIO.read(new File(IMG_DIR_PATH + "/character.png"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        BufferedImage forestImage = null;
-        try  {
             forestImage  = ImageIO.read(new File(IMG_DIR_PATH + "/forest.png"));
+            lootImage  = ImageIO.read(new File(IMG_DIR_PATH + "/loot.png"));
+            enemyImage  = ImageIO.read(new File(IMG_DIR_PATH + "/enemy.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
-
 
         for (GameObject [] row: gameObjects) {
             for (GameObject gameObject: row) {
@@ -99,6 +97,16 @@ public class GamePanel extends JPanel implements Runnable{
                     case FOREST: {
                         super.paintComponent(g);
                         g.drawImage(forestImage, gameObject.getX(), gameObject.getY(), 50, 50, null);
+                        loop();
+                    }
+                    case LOOT: {
+                        super.paintComponent(g);
+                        g.drawImage(lootImage, gameObject.getX(), gameObject.getY(), 50, 50, null);
+                        loop();
+                    }
+                    case ENEMY: {
+                        super.paintComponent(g);
+                        g.drawImage(enemyImage, gameObject.getX(), gameObject.getY(), 50, 50, null);
                         loop();
                     }
                 }

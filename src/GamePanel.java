@@ -1,4 +1,5 @@
 import GameObjects.GameObject;
+import GameObjects.GameObjectType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,8 +67,8 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         for (GameObject [] row: gameObjects) {
             for (GameObject gameObject: row) {
-                switch (GameObject.getType()) {
-                    case
+                switch (gameObject.getType()) {
+                    case PLAYER:
                 }
             }
         }

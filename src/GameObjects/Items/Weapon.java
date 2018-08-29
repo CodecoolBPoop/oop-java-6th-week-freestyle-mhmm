@@ -20,9 +20,4 @@ public class Weapon extends Item {
         Random random = new Random();
         return random.nextInt((this.maxDamage - this.minDamage) + this.minDamage);
     }
-
-    @Override
-    void assignToCharacter(Character character) {
-
-    }
 }

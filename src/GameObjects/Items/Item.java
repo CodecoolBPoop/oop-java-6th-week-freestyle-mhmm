@@ -15,9 +15,11 @@ public abstract class Item extends GameObject {
         this.id = nextId++;
     }
 
-    abstract void assignToCharacter(GameObjects.Characters.Enemy.Character character);
+    void assignToCharacter(GameObjects.Characters.Enemy.Character character) {
+        character.addItemToInventory(this);
+    };
 
-    int getValue() {
+    public int getValue() {
         return value;
     }
 

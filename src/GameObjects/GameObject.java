@@ -1,9 +1,15 @@
 package GameObjects;
 
 public class GameObject {
-    GameObjectType type;
+    int X;
+    int Y;
 
-    public GameObjectType getType() {
-        return type;
+    public int getX() {
+        return X;
     }
+
+    public int getY() {
+        return Y;
+    }
+
 }

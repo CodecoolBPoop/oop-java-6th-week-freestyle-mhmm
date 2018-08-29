@@ -12,8 +12,6 @@ public abstract class Character extends GameObject {
 
     int hitPoint;
     int damage;
-    int X;
-    int Y;
     List<Item> items = new ArrayList<>();
 
     public void takeDamage(int damageAmount){
@@ -22,14 +20,6 @@ public abstract class Character extends GameObject {
 
     public GameObjectType getType(){
         return type;
-    }
-
-    public int getX() {
-        return X;
-    }
-
-    public int getY() {
-        return Y;
     }
 
     public int getDamage() {

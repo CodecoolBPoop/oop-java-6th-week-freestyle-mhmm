@@ -2,6 +2,8 @@ package GameObjects.Items;
 
 import GameObjects.Characters.Character;
 import GameObjects.GameObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class Item extends GameObject {
 
@@ -9,6 +11,7 @@ public abstract class Item extends GameObject {
     private int id;
     private static int nextId;
     private String name;
+    private static final Logger logger = LoggerFactory.getLogger(Item.class);
 
     Item(String name, int value) {
         super(0,0);
@@ -19,6 +22,7 @@ public abstract class Item extends GameObject {
 
     void assignToCharacter(Character character) {
         character.addItemToInventory(this);
+        logger.info("'{}' added to inventory", this.name);
     };
 
     public int getValue() {

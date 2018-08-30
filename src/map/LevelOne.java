@@ -18,19 +18,8 @@ public class LevelOne extends Level{
         this.map = new GameObject[WIDTH][HEIGHT];
 
 
-        for(int i = 0; i< WIDTH-1; i++){
-                for (int j = 1; j<HEIGHT-1; j++) {
-                this.map[i][j] = new Floor(i, j, FLOOR);
-            }
-            this.map[i][0] = new Wall(i,0,FOREST);
-            this.map[i][HEIGHT-1] = new Wall(i,HEIGHT-1,FOREST);
-        }
-        for(int i = 0; i< HEIGHT-1; i++){
-            this.map[0][i] = new Wall(0,i,FOREST);
-            this.map[WIDTH-1][i] = new Wall(WIDTH-1,i,FOREST);
-        }
+        generateBase();
 
-        this.map[WIDTH-1][HEIGHT-1] = new Wall(WIDTH-1,HEIGHT-1,FOREST);
         this.map[1][1] = player;
         player.place(1,1);
 

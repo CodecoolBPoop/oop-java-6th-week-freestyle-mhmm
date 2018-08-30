@@ -16,15 +16,15 @@ import java.io.IOException;
 
 public class GamePanel extends JPanel implements Runnable {
 
+    private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
+    private static final int FIELD_SIZE = 80;
+    private final int STAT_SPACING = 50;
     private boolean isRunning = true;
     private Thread t;
-    private static int characterPositionX = 1;
-    private static int characterPositionY = 1;
     private Action upAction;
     private Action downAction;
     private Action leftAction;
     private Action rightAction;
-    private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
     public GameObject[][] gameObjects;
     private Player player = new Player(1, 1);
     private Level levelOne = new LevelOne(player);
@@ -71,9 +71,9 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void paintComponent(Graphics g) {
-        //filling our 2d list
 
-        gameObjects = ((LevelOne) levelOne).getLevel();
+
+
 
         //creating images
         BufferedImage playerImage = null;
@@ -91,6 +91,9 @@ public class GamePanel extends JPanel implements Runnable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        //filling our 2d list
+        gameObjects = ((LevelOne) levelOne).getLevel();
         super.paintComponent(g);
 
         //looping trough the 2d list and printing corresponding images
@@ -100,24 +103,38 @@ public class GamePanel extends JPanel implements Runnable {
 
                 switch (currentObject.getType()) {
                     case FOREST:
-                        g.drawImage(forestImage, i * 50, j * 50, 50, 50, null);
+                        g.drawImage(forestImage, i * FIELD_SIZE, j * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE, null);
                         break;
                     case ENEMY:
-                        g.drawImage(enemyImage, i * 50, j * 50, 50, 50, null);
+                        g.drawImage(enemyImage, i * FIELD_SIZE, j * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE, null);
                         break;
                     case PLAYER:
-                        g.drawImage(playerImage, currentObject.getX() * 50, currentObject.getY() * 50, 50, 50, null);
+                        g.drawImage(playerImage, currentObject.getX() * FIELD_SIZE, currentObject.getY() * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE, null);
                         break;
                     case LOOT:
-                        g.drawImage(lootImage, i * 50, j * 50, 50, 50, null);
+                        g.drawImage(lootImage, i * FIELD_SIZE, j * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE, null);
                         break;
                     default:
-                        g.drawImage(floorImage, i * 50, j * 50, 50, 50, null);
+                        g.drawImage(floorImage, i * FIELD_SIZE, j * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE, null);
                         break;
                 }
             }
         }
         loop();
+
+        //printing stats to the game
+        g.setFont(new Font("TimesRoman", Font.BOLD, 20));
+        g.drawString("HP: " +Integer.toString(player.getHitPoint()), 645, STAT_SPACING);
+        g.drawString("STR: " +Integer.toString(player.getStrength()), 645, STAT_SPACING*2);
+        g.drawString("DEX: " +Integer.toString(player.getAgility()), 645, STAT_SPACING*3);
+        g.drawString("INT: " +Integer.toString(player.getIntelligence()), 645, STAT_SPACING*4);
+    }
+
+    public void createButtons(JFrame frame, JPanel p) {
+        JButton inventoryButton = new JButton("Inventory");
+        p.setLayout(null);
+        inventoryButton.setBounds(640, STAT_SPACING*5, 90, 30);
+        p.add(inventoryButton);
     }
 
     //arrow controls

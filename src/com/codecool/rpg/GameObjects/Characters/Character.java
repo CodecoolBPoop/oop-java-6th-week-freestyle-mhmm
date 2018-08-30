@@ -49,4 +49,8 @@ public abstract class Character extends GameObject {
         this.hitPoint = hitPoint;
     }
 
+    public List<Item> getItems() {
+        return items;
+    }
+
 }

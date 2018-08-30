@@ -135,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable {
         p.setLayout(null);
         inventoryButton.setBounds(640, STAT_SPACING*5, 90, 30);
         p.add(inventoryButton);
-
+        inventoryButton.setRequestFocusEnabled(false);
         inventoryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -145,9 +145,9 @@ public class GamePanel extends JPanel implements Runnable {
                 inventoryFrame.setLocationRelativeTo(null);
 
                 List<Item> items = player.getItems();
-                for (Item item: items) {
-                    inventoryFrame.add(new JLabel(item.getName()));
-                }
+                JList<String> labels = createLabels(items);
+                labels.setFont(new Font("TimesRoman", Font.BOLD, 20));
+                inventoryFrame.add(labels);
             }
         });
     }
@@ -207,5 +207,13 @@ public class GamePanel extends JPanel implements Runnable {
         public void actionPerformed(ActionEvent e) {
             level.move(player.getX() + 1, player.getY(), player);
         }
+    }
+
+    private JList<String> createLabels(List<Item> items){
+        DefaultListModel<String> itemList = new DefaultListModel<>();
+        for (Item item: items) {
+            itemList.addElement(item.getName());
+        }
+        return new JList<>(itemList);
     }
 }

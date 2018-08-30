@@ -32,7 +32,6 @@ public class Player extends Character {
             this.hitPoint -= this.fullBody.getHealthIncrease();
         this.hitPoint += fullBody.getHealthIncrease();
         this.fullBody = fullBody;
-        this.setHitPoint(this.hitPoint + fullBody.getHealthIncrease());
     }
 
     public void setWeapon(Weapon weapon) {
@@ -93,5 +92,24 @@ public class Player extends Character {
 
     public int getIntelligence() {
         return intelligence;
+    }
+
+    public void equipItem(Item item) {
+        if (item.getType() == GameObjectType.ARMOR) {
+            setFullBody((Armor) item);
+        } else if (item.getType() == GameObjectType.WEAPON) {
+            setWeapon((Weapon) item);
+        }
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public String damageToString() {
+        if (weapon == null) {
+            return Integer.toString(strength);
+        }
+        return (weapon.getMinDamage() + strength) + " - " + (weapon.getMaxDamage() + strength);
     }
 }

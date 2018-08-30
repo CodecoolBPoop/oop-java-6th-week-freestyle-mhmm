@@ -42,7 +42,8 @@ public abstract class Character extends GameObject {
     public Item getItemById(int id) {
         return items.stream()
                 .filter(item -> item.getId() == id)
-                .findFirst().orElse(null);
+                .findFirst()
+                .orElse(null);
     }
 
     public void setHitPoint(int hitPoint) {
@@ -52,5 +53,13 @@ public abstract class Character extends GameObject {
     public List<Item> getItems() {
         return items;
     }
+
+    public Item getItemByName(String name) {
+        return items.stream()
+                .filter(item -> item.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
 
 }

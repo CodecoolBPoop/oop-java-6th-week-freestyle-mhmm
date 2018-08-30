@@ -117,7 +117,6 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         }
-        System.out.println("iterated");
         loop();
     }
 

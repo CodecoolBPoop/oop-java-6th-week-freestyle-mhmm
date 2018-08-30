@@ -7,8 +7,9 @@ public class Potion extends Item {
 
     private int buffValue;
 
-    public Potion(String name, int value, GameObjectType type) {
+    public Potion(String name, int value, int buffValue, GameObjectType type) {
         super(name, value);
+        this.buffValue = buffValue;
         this.type = type;
     }
 

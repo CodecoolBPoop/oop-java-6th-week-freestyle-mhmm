@@ -101,12 +101,16 @@ public class Player extends Character {
             setWeapon((Weapon) item);
         } else if (item.getType() == GameObjectType.HEALTHPOTION) {
             setHitPoint(hitPoint + ((Potion) item).getBuffValue());
+            items.remove(item);
         } else if (item.getType() == GameObjectType.STRENGHTPOTION) {
             changeStrength(((Potion) item).getBuffValue());
+            items.remove(item);
         } else if (item.getType() == GameObjectType.AGILITYPOTION) {
             changeAgility(((Potion) item).getBuffValue());
+            items.remove(item);
         } else if (item.getType() == GameObjectType.INTELLIGENCEPOTION) {
             changeIntelligence(((Potion) item).getBuffValue());
+            items.remove(item);
         }
     }
 

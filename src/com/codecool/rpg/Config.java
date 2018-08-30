@@ -44,8 +44,6 @@ public class Config {
         Weapon weapon17 = new Weapon("Gandalf's lost and found staff", 2000, 1,1);
         Weapon weapon18 = new Weapon("Purging Pebble", 1, 39,39 );
 
-
-
         itemsData.addItem(weapon1);
         itemsData.addItem(weapon2);
         itemsData.addItem(weapon3);
@@ -65,12 +63,12 @@ public class Config {
         itemsData.addItem(weapon17);
         itemsData.addItem(weapon18);
 
-        Potion healingPotion = new Potion("Healing Potion", 10, GameObjectType.HEALTHPOTION);
-        Potion majorHealingPotion = new Potion("Major Healing Potion", 20, GameObjectType.HEALTHPOTION);
-        Potion superHealingPotion = new Potion("Super Healing Potion", 40, GameObjectType.HEALTHPOTION);
-        Potion agilityPotion = new Potion("Agility Potion", 5, GameObjectType.AGILITYPOTION);
-        Potion strenghtPotion = new Potion("Strenght Potion", 5, GameObjectType.STRENGHTPOTION);
-        Potion intelligencePotion = new Potion("Intelligence Potion", 5, GameObjectType.INTELLIGENCEPOTION);
+        Potion healingPotion = new Potion("Healing Potion", 10, 10, GameObjectType.HEALTHPOTION);
+        Potion majorHealingPotion = new Potion("Major Healing Potion", 15, 20, GameObjectType.HEALTHPOTION);
+        Potion superHealingPotion = new Potion("Super Healing Potion", 20, 40, GameObjectType.HEALTHPOTION);
+        Potion agilityPotion = new Potion("Agility Potion", 20, 5, GameObjectType.AGILITYPOTION);
+        Potion strenghtPotion = new Potion("Strenght Potion", 20, 5, GameObjectType.STRENGHTPOTION);
+        Potion intelligencePotion = new Potion("Intelligence Potion", 25, 5, GameObjectType.INTELLIGENCEPOTION);
 
         itemsData.addItem(healingPotion);
         itemsData.addItem(majorHealingPotion);

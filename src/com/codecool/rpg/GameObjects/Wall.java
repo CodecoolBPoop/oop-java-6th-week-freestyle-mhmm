@@ -1,4 +1,4 @@
-package GameObjects;
+package com.codecool.rpg.GameObjects;
 
 public class Wall extends GameObject {
 

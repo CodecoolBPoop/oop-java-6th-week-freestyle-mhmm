@@ -1,8 +1,8 @@
-package GameObjects.Characters;
+package com.codecool.rpg.GameObjects.Characters;
 
-import GameObjects.GameObject;
-import GameObjects.GameObjectType;
-import GameObjects.Items.Item;
+import com.codecool.rpg.GameObjects.GameObject;
+import com.codecool.rpg.GameObjects.GameObjectType;
+import com.codecool.rpg.GameObjects.Items.Item;
 
 import java.util.ArrayList;
 import java.util.List;

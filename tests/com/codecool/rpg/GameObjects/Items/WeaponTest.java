@@ -1,4 +1,4 @@
-package GameObjects.Items;
+package com.codecool.rpg.GameObjects.Items;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;

@@ -1,7 +1,9 @@
-import GameObjects.Characters.Player;
-import GameObjects.GameObject;
-import map.Level;
-import map.LevelOne;
+package com.codecool.rpg;
+
+import com.codecool.rpg.GameObjects.Characters.Player;
+import com.codecool.rpg.GameObjects.GameObject;
+import com.codecool.rpg.map.Level;
+import com.codecool.rpg.map.LevelOne;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

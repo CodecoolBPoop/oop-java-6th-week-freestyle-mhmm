@@ -1,3 +1,5 @@
+package com.codecool.rpg;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;

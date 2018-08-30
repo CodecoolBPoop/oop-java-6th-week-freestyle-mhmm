@@ -1,4 +1,4 @@
-package GameObjects.Items;
+package com.codecool.rpg.GameObjects.Items;
 
 import java.util.Random;
 

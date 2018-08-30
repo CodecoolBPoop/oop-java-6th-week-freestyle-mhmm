@@ -1,11 +1,14 @@
-package GameObjects.Characters;
-import GameObjects.GameObjectType;
-import GameObjects.Items.*;
+package com.codecool.rpg.GameObjects.Characters;
+import com.codecool.rpg.GameObjects.GameObjectType;
+import com.codecool.rpg.GameObjects.Items.*;
+
+import java.util.List;
 
 public class Player extends Character {
     private int strength;
     private int agility;
     private int intelligence;
+    private int gold;
     private Armor fullBody;
     private Weapon weapon;
     public static int X;
@@ -19,6 +22,7 @@ public class Player extends Character {
         strength = 3;
         agility = 3;
         intelligence = 3;
+        gold = 10;
         this.X = X;
         this.Y = Y;
     }
@@ -65,10 +69,24 @@ public class Player extends Character {
         return testValue<intelligence;
     }
 
+    public void addGold(int gold) {
+        this.gold += gold;
+    }
     public int getStrength() {
         return strength;
     }
 
+    public void removeGold(int gold) {
+        this.gold -= gold;
+    }
+
+    public void loot(Loot loot) {
+        List<Item> lootItems = loot.getItems();
+        for (Item item : lootItems) {
+            items.add(item);
+        }
+        gold += loot.getGold();
+    }
     public int getAgility() {
         return agility;
     }

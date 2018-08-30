@@ -1,5 +1,7 @@
 package com.codecool.rpg.GameObjects.Items;
 
+import com.codecool.rpg.GameObjects.GameObjectType;
+
 public class Armor extends Item {
 
     private int healthIncrease;
@@ -7,6 +9,7 @@ public class Armor extends Item {
     public Armor(String name, int value, int healthIncrease) {
         super(name, value);
         this.healthIncrease = healthIncrease;
+        type = GameObjectType.ARMOR;
     }
 
     public int getHealthIncrease() {

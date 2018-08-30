@@ -72,6 +72,9 @@ public class Player extends Character {
     public void addGold(int gold) {
         this.gold += gold;
     }
+    public int getStrength() {
+        return strength;
+    }
 
     public void removeGold(int gold) {
         this.gold -= gold;
@@ -83,5 +86,12 @@ public class Player extends Character {
             items.add(item);
         }
         gold += loot.getGold();
+    }
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
     }
 }

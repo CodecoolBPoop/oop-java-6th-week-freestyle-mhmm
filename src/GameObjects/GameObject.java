@@ -21,4 +21,9 @@ public class GameObject {
         return Y;
     }
 
+    public void place(int X, int Y){
+        this.X = X;
+        this.Y = Y;
+    }
+
 }

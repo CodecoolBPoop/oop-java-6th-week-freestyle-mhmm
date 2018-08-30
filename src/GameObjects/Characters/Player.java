@@ -8,6 +8,9 @@ public class Player extends Character {
     private int intelligence;
     private Armor fullBody;
     private Weapon weapon;
+    public static int X;
+    public static int Y;
+
 
 
     public Player(int X, int Y) {
@@ -16,6 +19,8 @@ public class Player extends Character {
         strength = 3;
         agility = 3;
         intelligence = 3;
+        this.X = X;
+        this.Y = Y;
     }
 
     public void setFullBody(Armor fullBody) {
@@ -59,5 +64,6 @@ public class Player extends Character {
     public boolean intelligenceTest(int testValue){
         return testValue<intelligence;
     }
+
 
 }

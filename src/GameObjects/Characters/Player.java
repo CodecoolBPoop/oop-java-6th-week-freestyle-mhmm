@@ -65,5 +65,15 @@ public class Player extends Character {
         return testValue<intelligence;
     }
 
+    public int getStrength() {
+        return strength;
+    }
 
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
 }

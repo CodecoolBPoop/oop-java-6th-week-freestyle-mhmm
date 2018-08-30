@@ -2,6 +2,7 @@ package map;
 import GameObjects.Characters.Character;
 import GameObjects.Floor;
 import GameObjects.GameObject;
+import GameObjects.GameObjectType;
 import GameObjects.Wall;
 
 import static GameObjects.GameObjectType.FLOOR;

@@ -24,6 +24,7 @@ public class GamePanel extends JPanel implements Runnable{
     private Action rightAction;
     private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
     private GameObject[][] gameObjects;
+    protected Player player = new Player(0,0);
 
     GamePanel()
     {
@@ -94,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
 
         //looping trough the 2d list and printing corresponding images
+
         for (int i= 0; i < gameObjects.length; i++) {
             for (int j= 0; j < gameObjects[i].length; j++) {
                 switch (gameObjects[i][j].getType()) {
@@ -105,7 +107,6 @@ public class GamePanel extends JPanel implements Runnable{
                         break;
                     case PLAYER:
                         g.drawImage(playerImage, i*50, j*50, 50, 50, null);
-                        loop();
                         break;
                     case LOOT:
                         g.drawImage(lootImage, i*50, j*50, 50, 50, null);
@@ -116,11 +117,14 @@ public class GamePanel extends JPanel implements Runnable{
                 }
             }
         }
+        System.out.println("iterated");
+        loop();
     }
 
     //arrow controls
     static class UpAction extends AbstractAction
     {
+
         public void actionPerformed(ActionEvent e)
         {
             if (characterPositionY > 0) {

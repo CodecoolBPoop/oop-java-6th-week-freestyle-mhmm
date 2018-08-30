@@ -1,11 +1,15 @@
 package map;
 import GameObjects.Characters.Character;
+import GameObjects.Characters.Player;
+import GameObjects.Characters.enemy.Enemy;
 import GameObjects.Floor;
 import GameObjects.GameObject;
+import GameObjects.GameObjectType;
 import GameObjects.Wall;
 
 import static GameObjects.GameObjectType.FLOOR;
 import static GameObjects.GameObjectType.FOREST;
+import static GameObjects.GameObjectType.PLAYER;
 
 public abstract class Level {
     GameObject[][] map;
@@ -22,14 +26,30 @@ public abstract class Level {
             case FLOOR: {
                 map[toX][toY] = movingCharacter;
                 map[fromX][fromY] = destination;
+                movingCharacter.place(toX, toY);
+                break;
             }
             case LOOT: {
                 map[toX][toY] = movingCharacter;
                 map[fromX][fromY] = new Floor(fromX, fromY, GameObjectType.FLOOR);
+                movingCharacter.place(toX, toY);
+                break;
             }
-            movingCharacter.place(toX, toY);
+            case ENEMY: {
+                if (movingCharacter instanceof Player) {
+                    Player player = (Player) movingCharacter;
+                    Enemy enemy = (Enemy) destination;
+                    player.takeDamage(enemy.attack());
+                    enemy.takeDamage(player.attack());
+                    if (enemy.getHitPoint() <= 0) {
+                        map[toX][toY] = movingCharacter;
+                        map[fromX][fromY] = new Floor(fromX, fromY, FLOOR);
+                        movingCharacter.place(toX, toY);
+                    }
+                    break;
+                }
+            }
         }
-
 
     }
 

@@ -12,5 +12,4 @@ public abstract class Enemy extends Character {
         return this.damage;
     }
 
-
 }

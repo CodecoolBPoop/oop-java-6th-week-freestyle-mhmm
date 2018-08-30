@@ -3,7 +3,7 @@ package GameObjects;
 public enum GameObjectType {
     PLAYER,
     FOREST,
-    LOOT,
+    FLOOR,
     ENEMY,
-    FLOOR;
+    LOOT;
 }

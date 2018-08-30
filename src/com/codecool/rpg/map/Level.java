@@ -1,5 +1,7 @@
 package com.codecool.rpg.map;
 import com.codecool.rpg.GameObjects.Characters.Character;
+import com.codecool.rpg.GameObjects.Characters.Player;
+import com.codecool.rpg.GameObjects.Characters.enemy.Enemy;
 import com.codecool.rpg.GameObjects.Floor;
 import com.codecool.rpg.GameObjects.GameObject;
 import com.codecool.rpg.GameObjects.GameObjectType;

@@ -7,5 +7,9 @@ public enum GameObjectType {
     ENEMY,
     FLOOR,
     WEAPON,
-    ARMOR
+    ARMOR,
+    HEALTHPOTION,
+    STRENGHTPOTION,
+    AGILITYPOTION,
+    INTELLIGENCEPOTION
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class GamePanel extends JPanel implements Runnable {
 
     private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
-    private static final int FIELD_SIZE = 80;
+    private static final int FIELD_SIZE = 65;
     private final int STAT_SPACING = 50;
     private Player player = new Player(1, 1);
     private Level levelOne = new LevelOne(player);

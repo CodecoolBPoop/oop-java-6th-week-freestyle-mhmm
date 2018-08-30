@@ -84,7 +84,7 @@ public class Player extends Character {
         for (Item item : lootItems) {
             items.add(item);
         }
-        gold += loot.getGold();
+        addGold(loot.getGold());
     }
     public int getAgility() {
         return agility;
@@ -99,6 +99,14 @@ public class Player extends Character {
             setFullBody((Armor) item);
         } else if (item.getType() == GameObjectType.WEAPON) {
             setWeapon((Weapon) item);
+        } else if (item.getType() == GameObjectType.HEALTHPOTION) {
+            setHitPoint(hitPoint + ((Potion) item).getBuffValue());
+        } else if (item.getType() == GameObjectType.STRENGHTPOTION) {
+            changeStrength(((Potion) item).getBuffValue());
+        } else if (item.getType() == GameObjectType.AGILITYPOTION) {
+            changeAgility(((Potion) item).getBuffValue());
+        } else if (item.getType() == GameObjectType.INTELLIGENCEPOTION) {
+            changeIntelligence(((Potion) item).getBuffValue());
         }
     }
 

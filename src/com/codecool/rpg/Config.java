@@ -1,7 +1,11 @@
 package com.codecool.rpg;
 
+import com.codecool.rpg.GameObjects.GameObjectType;
 import com.codecool.rpg.GameObjects.Items.Armor;
 import com.codecool.rpg.GameObjects.Items.Weapon;
+import com.codecool.rpg.GameObjects.Items.Potion;
+
+import java.awt.geom.Point2D;
 
 public class Config {
 
@@ -26,5 +30,19 @@ public class Config {
         itemsData.addItem(weapon1);
         itemsData.addItem(weapon2);
         itemsData.addItem(weapon3);
+
+        Potion healingPotion = new Potion("Healing Potion", 10, GameObjectType.HEALTHPOTION);
+        Potion majorHealingPotion = new Potion("Major Healing Potion", 20, GameObjectType.HEALTHPOTION);
+        Potion superHealingPotion = new Potion("Super Healing Potion", 40, GameObjectType.HEALTHPOTION);
+        Potion agilityPotion = new Potion("Agility Potion", 5, GameObjectType.AGILITYPOTION);
+        Potion strenghtPotion = new Potion("Strenght Potion", 5, GameObjectType.STRENGHTPOTION);
+        Potion intelligencePotion = new Potion("Intelligence Potion", 5, GameObjectType.INTELLIGENCEPOTION);
+
+        itemsData.addItem(healingPotion);
+        itemsData.addItem(majorHealingPotion);
+        itemsData.addItem(superHealingPotion);
+        itemsData.addItem(agilityPotion);
+        itemsData.addItem(strenghtPotion);
+        itemsData.addItem(intelligencePotion);
     }
 }

@@ -1,4 +1,4 @@
-package GameObjects;
+package com.codecool.rpg.GameObjects;
 
 public enum GameObjectType {
     PLAYER,

@@ -1,7 +1,7 @@
-package GameObjects.Items;
+package com.codecool.rpg.GameObjects.Items;
 
-import GameObjects.Characters.Character;
-import GameObjects.GameObject;
+import com.codecool.rpg.GameObjects.Characters.Character;
+import com.codecool.rpg.GameObjects.GameObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,7 +33,7 @@ public abstract class Item extends GameObject {
         return id;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 }

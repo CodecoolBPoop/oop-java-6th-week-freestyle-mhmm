@@ -1,15 +1,12 @@
-package map;
-import GameObjects.Characters.Character;
-import GameObjects.Characters.Player;
-import GameObjects.Characters.enemy.Enemy;
-import GameObjects.Floor;
-import GameObjects.GameObject;
-import GameObjects.GameObjectType;
-import GameObjects.Wall;
+package com.codecool.rpg.map;
+import com.codecool.rpg.GameObjects.Characters.Character;
+import com.codecool.rpg.GameObjects.Floor;
+import com.codecool.rpg.GameObjects.GameObject;
+import com.codecool.rpg.GameObjects.GameObjectType;
+import com.codecool.rpg.GameObjects.Wall;
 
-import static GameObjects.GameObjectType.FLOOR;
-import static GameObjects.GameObjectType.FOREST;
-import static GameObjects.GameObjectType.PLAYER;
+import static com.codecool.rpg.GameObjects.GameObjectType.FLOOR;
+import static com.codecool.rpg.GameObjects.GameObjectType.FOREST;
 
 public abstract class Level {
     GameObject[][] map;

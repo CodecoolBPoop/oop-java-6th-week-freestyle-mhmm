@@ -1,6 +1,6 @@
-package GameObjects.Items;
+package com.codecool.rpg.GameObjects.Items;
 
-import GameObjects.Characters.Player;
+import com.codecool.rpg.GameObjects.Characters.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

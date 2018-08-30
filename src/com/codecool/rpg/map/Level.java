@@ -30,6 +30,8 @@ public abstract class Level {
                 break;
             }
             case LOOT: {
+                Loot loot = (Loot) map[toX][toY];
+                ((Player) movingCharacter).loot(loot);
                 map[toX][toY] = movingCharacter;
                 map[fromX][fromY] = new Floor(fromX, fromY, GameObjectType.FLOOR);
                 movingCharacter.place(toX, toY);

@@ -3,7 +3,7 @@ import static GameObjects.GameObjectType.FLOOR;
 import static GameObjects.GameObjectType.FOREST;
 
 import GameObjects.Characters.Player;
-import GameObjects.Characters.enemy.Slime;
+import GameObjects.Characters.Enemy.Slime;
 import GameObjects.Floor;
 import GameObjects.GameObject;
 import GameObjects.GameObjectType;

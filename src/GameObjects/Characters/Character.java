@@ -48,4 +48,5 @@ public abstract class Character extends GameObject {
     public void setHitPoint(int hitPoint) {
         this.hitPoint = hitPoint;
     }
+
 }

@@ -12,10 +12,24 @@ public abstract class Level {
     int WIDTH;
     int HEIGHT;
 
-    void move(int toX, int toY, Character movingCharacter){
+    public void move(int toX, int toY, Character movingCharacter){
+        int fromX = movingCharacter.getX();
+        int fromY = movingCharacter.getY();
+        GameObject destination = map[toX][toY];
 
-        map[movingCharacter.getX()][movingCharacter.getY()] = null;
-        map[toX][toY] = movingCharacter;
+        switch (map[toX][toY].getType()) {
+            case FOREST: break;
+            case FLOOR: {
+                map[toX][toY] = movingCharacter;
+                map[fromX][fromY] = destination;
+            }
+            case LOOT: {
+                map[toX][toY] = movingCharacter;
+                map[fromX][fromY] = new Floor(fromX, fromY, GameObjectType.FLOOR);
+            }
+            movingCharacter.place(toX, toY);
+        }
+
 
     }
 

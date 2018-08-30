@@ -19,7 +19,7 @@ import java.util.List;
 public class GamePanel extends JPanel implements Runnable {
 
     private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
-    private static final int FIELD_SIZE = 65;
+    private static final int FIELD_SIZE = 62;
     private final int STAT_SPACING = 50;
     private Player player = new Player(1, 1);
     private Level levelOne = new LevelOne(player);
@@ -191,7 +191,7 @@ public class GamePanel extends JPanel implements Runnable {
     private JList<String> createLabels(List<Item> items){
         DefaultListModel<String> itemList = new DefaultListModel<>();
         for (Item item: items) {
-            itemList.addElement(item.getName());
+            itemList.addElement(item.toString());
         }
         return new JList<>(itemList);
     }
@@ -199,7 +199,7 @@ public class GamePanel extends JPanel implements Runnable {
     private ActionListener equipActionListener(JList list) {
         return (event) ->{
                 String itemName = (String) list.getSelectedValue();
-                Item toEquip = player.getItemByName(itemName);
+                Item toEquip = player.getItemByName(itemName.split("\\|")[0]);
                 player.equipItem(toEquip);
         };
     }

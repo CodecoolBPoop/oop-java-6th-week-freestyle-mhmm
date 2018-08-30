@@ -36,4 +36,6 @@ public abstract class Item extends GameObject {
     public String getName() {
         return name;
     }
+
+    public abstract String toString();
 }

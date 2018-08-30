@@ -42,7 +42,7 @@ public class Config {
         Weapon weapon15 = new Weapon("Cruel Crude Candle", 14, 8, 3);
         Weapon weapon16 = new Weapon("Phoenix Pike", 14, 62, 33);
         Weapon weapon17 = new Weapon("Gandalf's lost and found staff", 2000, 1,1);
-        Weapon weapon18 = new Weapon("Purging Pebble", 1, 39,39 );
+        Weapon weapon18 = new Weapon("Purging Pebble", 1, 40,39 );
 
         itemsData.addItem(weapon1);
         itemsData.addItem(weapon2);

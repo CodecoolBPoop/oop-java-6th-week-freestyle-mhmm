@@ -1,6 +1,7 @@
-import GameObjects.Items.Armor;
-import GameObjects.Items.Item;
-import GameObjects.Items.Weapon;
+import com.codecool.rpg.GameObjects.Items.Armor;
+import com.codecool.rpg.GameObjects.Items.Item;
+import com.codecool.rpg.GameObjects.Items.Weapon;
+import com.codecool.rpg.ItemsDataDao;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 

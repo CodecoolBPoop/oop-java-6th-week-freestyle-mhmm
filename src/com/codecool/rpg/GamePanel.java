@@ -124,30 +124,45 @@ public class GamePanel extends JPanel implements Runnable {
 
         //printing stats to the game
         g.setFont(new Font("TimesRoman", Font.BOLD, 20));
-        g.drawString("HP: " +Integer.toString(player.getHitPoint()), 645, STAT_SPACING);
-        g.drawString("STR: " +Integer.toString(player.getStrength()), 645, STAT_SPACING*2);
-        g.drawString("DEX: " +Integer.toString(player.getAgility()), 645, STAT_SPACING*3);
-        g.drawString("INT: " +Integer.toString(player.getIntelligence()), 645, STAT_SPACING*4);
+        g.drawString("HP: " + Integer.toString(player.getHitPoint()), 645, STAT_SPACING);
+        g.drawString("DMG: " + player.damageToString(), 645, STAT_SPACING*2);
+        g.drawString("STR: " + Integer.toString(player.getStrength()), 645, STAT_SPACING*3);
+        g.drawString("DEX: " + Integer.toString(player.getAgility()), 645, STAT_SPACING*4);
+        g.drawString("INT: " + Integer.toString(player.getIntelligence()), 645, STAT_SPACING*5);
+        g.drawString("GOLD: " + Integer.toString(player.getGold()), 645, STAT_SPACING*6);
+
     }
 
     public void createInventoryButton(JPanel p) {
         JButton inventoryButton = new JButton("Inventory");
         p.setLayout(null);
-        inventoryButton.setBounds(640, STAT_SPACING*5, 90, 30);
+        inventoryButton.setBounds(640, STAT_SPACING*7, 90, 30);
         p.add(inventoryButton);
         inventoryButton.setRequestFocusEnabled(false);
         inventoryButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame inventoryFrame = new JFrame();
+                //creating inventory frame
+                JFrame inventoryFrame = new JFrame("Inventory");
+                inventoryFrame.setLayout(new BorderLayout());
                 inventoryFrame.setVisible(true);
                 inventoryFrame.setSize(500,500);
                 inventoryFrame.setLocationRelativeTo(null);
 
+                //getting and printing the items
                 List<Item> items = player.getItems();
                 JList<String> labels = createLabels(items);
                 labels.setFont(new Font("TimesRoman", Font.BOLD, 20));
+                labels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 inventoryFrame.add(labels);
+
+                //creating Equip button
+                JButton equipButton = new JButton("Equip");
+                equipButton.setSize(80, 30);
+                equipButton.setVisible(true);
+                inventoryFrame.add(equipButton, BorderLayout.SOUTH);
+                equipButton.addActionListener(equipActionListener(labels));
+
             }
         });
     }
@@ -215,5 +230,16 @@ public class GamePanel extends JPanel implements Runnable {
             itemList.addElement(item.getName());
         }
         return new JList<>(itemList);
+    }
+
+    private ActionListener equipActionListener(JList list) {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String itemName = (String) list.getSelectedValue();
+                Item toEquip = player.getItemByName(itemName);
+                player.equipItem(toEquip);
+            }
+        };
     }
 }

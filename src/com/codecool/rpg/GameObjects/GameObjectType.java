@@ -3,7 +3,9 @@ package com.codecool.rpg.GameObjects;
 public enum GameObjectType {
     PLAYER,
     FOREST,
-    FLOOR,
+    LOOT,
     ENEMY,
-    LOOT;
+    FLOOR,
+    WEAPON,
+    ARMOR
 }

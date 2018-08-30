@@ -5,5 +5,7 @@ public enum GameObjectType {
     FOREST,
     LOOT,
     ENEMY,
-    FLOOR;
+    FLOOR,
+    WEAPON,
+    ARMOR
 }

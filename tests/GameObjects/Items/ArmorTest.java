@@ -32,7 +32,7 @@ class ArmorTest {
 
     @Test
     void testArmorAssignToCharacter() {
-        Player player = new Player(0, 0);
+        Player player = new Player(0,0);
         armor.assignToCharacter(player);
         assertNotNull(player.getItemById(armor.getId()));
     }

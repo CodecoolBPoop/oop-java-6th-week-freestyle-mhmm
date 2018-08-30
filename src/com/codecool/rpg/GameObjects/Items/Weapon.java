@@ -1,5 +1,7 @@
 package com.codecool.rpg.GameObjects.Items;
 
+import com.codecool.rpg.GameObjects.GameObjectType;
+
 import java.util.Random;
 
 public class Weapon extends Item {
@@ -11,6 +13,7 @@ public class Weapon extends Item {
         super(name, value);
         this.maxDamage = maxDamage;
         this.minDamage = minDamage;
+        type = GameObjectType.WEAPON;
     }
 
     public int dealDamage() {

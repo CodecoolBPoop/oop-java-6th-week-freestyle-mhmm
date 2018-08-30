@@ -3,7 +3,7 @@ import static com.codecool.rpg.GameObjects.GameObjectType.FLOOR;
 import static com.codecool.rpg.GameObjects.GameObjectType.FOREST;
 
 import com.codecool.rpg.GameObjects.Characters.Player;
-import com.codecool.rpg.GameObjects.Characters.Enemy.Slime;
+import com.codecool.rpg.GameObjects.Characters.enemy.Slime;
 import com.codecool.rpg.GameObjects.Floor;
 import com.codecool.rpg.GameObjects.GameObject;
 import com.codecool.rpg.GameObjects.GameObjectType;

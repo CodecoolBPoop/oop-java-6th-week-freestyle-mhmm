@@ -5,6 +5,7 @@ import com.codecool.rpg.GameObjects.Characters.enemy.Enemy;
 import com.codecool.rpg.GameObjects.Floor;
 import com.codecool.rpg.GameObjects.GameObject;
 import com.codecool.rpg.GameObjects.GameObjectType;
+import com.codecool.rpg.GameObjects.Items.Loot;
 import com.codecool.rpg.GameObjects.Wall;
 
 import static com.codecool.rpg.GameObjects.GameObjectType.FLOOR;
@@ -29,9 +30,12 @@ public abstract class Level {
                 break;
             }
             case LOOT: {
+                Loot loot = (Loot) map[toX][toY];
+                ((Player) movingCharacter).loot(loot);
                 map[toX][toY] = movingCharacter;
                 map[fromX][fromY] = new Floor(fromX, fromY, GameObjectType.FLOOR);
                 movingCharacter.place(toX, toY);
+
                 break;
             }
             case ENEMY: {
@@ -41,9 +45,7 @@ public abstract class Level {
                     player.takeDamage(enemy.attack());
                     enemy.takeDamage(player.attack());
                     if (enemy.getHitPoint() <= 0) {
-                        map[toX][toY] = movingCharacter;
-                        map[fromX][fromY] = new Floor(fromX, fromY, FLOOR);
-                        movingCharacter.place(toX, toY);
+                        map[toX][toY] = new Loot(toX,toY);
                     }
                     break;
                 }

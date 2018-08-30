@@ -7,14 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Loot {
+import static com.codecool.rpg.GameObjects.GameObjectType.LOOT;
+
+public class Loot extends GameObject {
 
     private List<Item> loot = new ArrayList<>();
     private ItemsDataDao itemsList = ItemsDataDao.getInstance();
     private int gold;
     private Random random = new Random();
 
-    public Loot() {
+    public Loot(int X, int Y) {
+        super(X,Y);
+        this.type = LOOT;
         this.gold = random.nextInt(10) + 1;
         add();
     }

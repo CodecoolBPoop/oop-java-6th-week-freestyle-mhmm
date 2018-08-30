@@ -11,6 +11,7 @@ public class MainFrame{
 
     public MainFrame()
     {
+        Config.initialize();
         gamepanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

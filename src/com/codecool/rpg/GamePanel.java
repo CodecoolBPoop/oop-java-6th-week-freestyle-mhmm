@@ -13,7 +13,6 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,22 +21,15 @@ public class GamePanel extends JPanel implements Runnable {
     private final String IMG_DIR_PATH = System.getProperty("user.dir") + "/img";
     private static final int FIELD_SIZE = 80;
     private final int STAT_SPACING = 50;
-    private boolean isRunning = true;
-    private Thread t;
-    private Action upAction;
-    private Action downAction;
-    private Action leftAction;
-    private Action rightAction;
-    public GameObject[][] gameObjects;
     private Player player = new Player(1, 1);
     private Level levelOne = new LevelOne(player);
 
     GamePanel() {
         setFocusable(true);
-        upAction = new UpAction(player, levelOne);
-        downAction = new DownAction(player, levelOne);
-        leftAction = new LeftAction(player, levelOne);
-        rightAction = new RightAction(player, levelOne);
+        Action upAction = new UpAction(player, levelOne);
+        Action downAction = new DownAction(player, levelOne);
+        Action leftAction = new LeftAction(player, levelOne);
+        Action rightAction = new RightAction(player, levelOne);
 
         this.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upMotion");
         this.getActionMap().put("upMotion", upAction);
@@ -51,9 +43,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "rightMotion");
         this.getActionMap().put("rightMotion", rightAction);
 
-        t = new Thread(this);
+        Thread t = new Thread(this);
         t.run();
-
+        createInventoryButton(this);
     }
 
     public void run() {
@@ -61,16 +53,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     private void loop() {
+        boolean isRunning = true;
         if (isRunning) {
-            Thread t = Thread.currentThread();
             try {
-                t.sleep(5);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             repaint();
         }
-
     }
 
     public void paintComponent(Graphics g) {
@@ -93,7 +84,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
 
         //filling our 2d list
-        gameObjects = ((LevelOne) levelOne).getLevel();
+        GameObject[][] gameObjects = ((LevelOne) levelOne).getLevel();
         super.paintComponent(g);
 
         //looping trough the 2d list and printing corresponding images
@@ -123,6 +114,11 @@ public class GamePanel extends JPanel implements Runnable {
         loop();
 
         //printing stats to the game
+        displayStats(g);
+
+    }
+
+    private void displayStats(Graphics g) {
         g.setFont(new Font("TimesRoman", Font.BOLD, 20));
         g.drawString("HP: " + Integer.toString(player.getHitPoint()), 645, STAT_SPACING);
         g.drawString("DMG: " + player.damageToString(), 645, STAT_SPACING*2);
@@ -130,41 +126,66 @@ public class GamePanel extends JPanel implements Runnable {
         g.drawString("DEX: " + Integer.toString(player.getAgility()), 645, STAT_SPACING*4);
         g.drawString("INT: " + Integer.toString(player.getIntelligence()), 645, STAT_SPACING*5);
         g.drawString("GOLD: " + Integer.toString(player.getGold()), 645, STAT_SPACING*6);
-
     }
 
-    public void createInventoryButton(JPanel p) {
+    private void createInventoryButton(JPanel panel) {
         JButton inventoryButton = new JButton("Inventory");
-        p.setLayout(null);
+        panel.setLayout(null);
         inventoryButton.setBounds(640, STAT_SPACING*7, 90, 30);
-        p.add(inventoryButton);
+        panel.add(inventoryButton);
         inventoryButton.setRequestFocusEnabled(false);
-        inventoryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        inventoryButton.addActionListener((event) -> {
                 //creating inventory frame
-                JFrame inventoryFrame = new JFrame("Inventory");
-                inventoryFrame.setLayout(new BorderLayout());
-                inventoryFrame.setVisible(true);
-                inventoryFrame.setSize(500,500);
-                inventoryFrame.setLocationRelativeTo(null);
+                JFrame inventoryFrame = getInventoryFrame();
 
                 //getting and printing the items
-                List<Item> items = player.getItems();
-                JList<String> labels = createLabels(items);
-                labels.setFont(new Font("TimesRoman", Font.BOLD, 20));
-                labels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                inventoryFrame.add(labels);
+                JList<String> labels = getInventoryItems(inventoryFrame);
 
                 //creating Equip button
-                JButton equipButton = new JButton("Equip");
-                equipButton.setSize(80, 30);
-                equipButton.setVisible(true);
-                inventoryFrame.add(equipButton, BorderLayout.SOUTH);
-                equipButton.addActionListener(equipActionListener(labels));
-
-            }
+                creatingEquipButton(inventoryFrame, labels);
         });
+    }
+
+    private void creatingEquipButton(JFrame inventoryFrame, JList<String> labels) {
+        JButton equipButton = new JButton("Equip");
+        equipButton.setSize(80, 30);
+        equipButton.setVisible(true);
+        inventoryFrame.add(equipButton, BorderLayout.SOUTH);
+        equipButton.addActionListener(equipActionListener(labels));
+    }
+
+    private JList<String> getInventoryItems(JFrame inventoryFrame) {
+        List<Item> items = player.getItems();
+        JList<String> labels = createLabels(items);
+        labels.setFont(new Font("TimesRoman", Font.BOLD, 20));
+        labels.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        inventoryFrame.add(labels);
+        return labels;
+    }
+
+    private JFrame getInventoryFrame() {
+        JFrame inventoryFrame = new JFrame("Inventory");
+        inventoryFrame.setLayout(new BorderLayout());
+        inventoryFrame.setVisible(true);
+        inventoryFrame.setSize(500,500);
+        inventoryFrame.setLocationRelativeTo(null);
+        return inventoryFrame;
+    }
+
+    private JList<String> createLabels(List<Item> items){
+        DefaultListModel<String> itemList = new DefaultListModel<>();
+        for (Item item: items) {
+            itemList.addElement(item.getName());
+        }
+        return new JList<>(itemList);
+    }
+
+    private ActionListener equipActionListener(JList list) {
+        return (event) ->{
+                String itemName = (String) list.getSelectedValue();
+                Item toEquip = player.getItemByName(itemName);
+                player.equipItem(toEquip);
+        };
     }
 
     //arrow controls
@@ -222,24 +243,5 @@ public class GamePanel extends JPanel implements Runnable {
         public void actionPerformed(ActionEvent e) {
             level.move(player.getX() + 1, player.getY(), player);
         }
-    }
-
-    private JList<String> createLabels(List<Item> items){
-        DefaultListModel<String> itemList = new DefaultListModel<>();
-        for (Item item: items) {
-            itemList.addElement(item.getName());
-        }
-        return new JList<>(itemList);
-    }
-
-    private ActionListener equipActionListener(JList list) {
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String itemName = (String) list.getSelectedValue();
-                Item toEquip = player.getItemByName(itemName);
-                player.equipItem(toEquip);
-            }
-        };
     }
 }

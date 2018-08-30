@@ -5,11 +5,10 @@ import java.awt.*;
 
 public class MainFrame{
 
-    JFrame frame = new JFrame("Adventures of Punk Rock Stickman");
+    private JFrame frame = new JFrame("Adventures of Punk Rock Stickman");
     GamePanel gamepanel = new GamePanel();
 
-    public MainFrame()
-    {
+    public MainFrame() {
         Config.initialize();
         gamepanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         frame.setVisible(true);
@@ -19,10 +18,8 @@ public class MainFrame{
         frame.setLocationRelativeTo(null);
         frame.add(gamepanel);
         gamepanel.requestFocusInWindow();
-        gamepanel.createInventoryButton(gamepanel);
     }
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         new MainFrame();
     }
 

@@ -72,6 +72,8 @@ public class GamePanel extends JPanel implements Runnable {
         BufferedImage lootImage = null;
         BufferedImage enemyImage = null;
         BufferedImage floorImage = null;
+        BufferedImage gameOverImage = null;
+
 
         try {
             playerImage = ImageIO.read(new File(IMG_DIR_PATH + "/character.png"));
@@ -79,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
             lootImage = ImageIO.read(new File(IMG_DIR_PATH + "/loot.png"));
             enemyImage = ImageIO.read(new File(IMG_DIR_PATH + "/enemy.png"));
             floorImage = ImageIO.read(new File(IMG_DIR_PATH + "/floor.png"));
+            gameOverImage = ImageIO.read(new File(IMG_DIR_PATH + "/gameover.png"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -112,10 +115,23 @@ public class GamePanel extends JPanel implements Runnable {
             }
         }
         loop();
+        checkForLose();
 
         //printing stats to the game
         displayStats(g);
 
+    }
+
+    private void checkForLose() {
+        if (player.getHitPoint() <= 0) {
+            ImageIcon gameOverImageIcon = new ImageIcon(IMG_DIR_PATH + "/gameover.png");
+            JLabel gameOverImageLabel = new JLabel(gameOverImageIcon);
+            gameOverImageLabel.setSize(830, 995);
+            this.add(gameOverImageLabel);
+            gameOverImageLabel.setVisible(true);
+            gameOverImageLabel.setFocusable(true);
+            gameOverImageLabel.requestFocusInWindow();
+        }
     }
 
     private void displayStats(Graphics g) {

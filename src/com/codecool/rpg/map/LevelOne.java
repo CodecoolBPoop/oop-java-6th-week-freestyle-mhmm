@@ -23,9 +23,28 @@ public class LevelOne extends Level{
         this.map[1][1] = player;
         player.place(1,1);
 
-        this.map[4][4] = new Slime(4,4);
-        this.map[3][4] = new Slime(3,4);
-        this.map[2][4] = new Slime(2,4);
+        placeWall(1,2,FOREST);
+        placeWall(2,2,FOREST);
+        placeWall(3,2,FOREST);
+        placeWall(3,3,FOREST);
+        placeWall(4,3,FOREST);
+        placeWall(6,3,FOREST);
+
+        this.map[5][3] = new Slime(5,3, 1);
+        this.map[3][4] = new Slime(3,4, 2);
+        this.map[2][4] = new Slime(2,4, 4);
+        this.map[1][3] = new Slime(1,3, 2);
+        this.map[2][3] = new Slime(2,3, 15);
+        this.map[1][9] = new Slime(1,9, 20);
+        this.map[6][9] = new Slime(6,9, 40);
+
+        placeWall(5,7,FOREST);
+        placeWall(4,7,FOREST);
+        placeWall(3,7,FOREST);
+        placeWall(2,7,FOREST);
+        placeWall(3,8,FOREST);
+        placeWall(3,9,FOREST);
+        placeWall(3,10,FOREST);
     }
 
     public GameObject[][] getLevel(){

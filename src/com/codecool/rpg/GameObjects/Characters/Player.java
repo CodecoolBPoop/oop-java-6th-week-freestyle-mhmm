@@ -29,7 +29,7 @@ public class Player extends Character {
 
     public void setFullBody(Armor fullBody) {
         if (this.fullBody != null)
-            this.hitPoint -= this.fullBody.getHealthIncrease();
+        this.hitPoint -= this.fullBody.getHealthIncrease();
         this.hitPoint += fullBody.getHealthIncrease();
         this.fullBody = fullBody;
     }

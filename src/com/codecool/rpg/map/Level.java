@@ -16,6 +16,10 @@ public abstract class Level {
     int WIDTH;
     int HEIGHT;
 
+    public void placeWall(int x,int y,GameObjectType type){
+        this.map[x][y] = new Wall(x,y,type);
+    }
+
     public void move(int toX, int toY, Character movingCharacter){
         int fromX = movingCharacter.getX();
         int fromY = movingCharacter.getY();

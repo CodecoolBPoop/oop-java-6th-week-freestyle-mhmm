@@ -1,7 +1,6 @@
 package com.codecool.rpg;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class MainFrame{
@@ -20,7 +19,7 @@ public class MainFrame{
         frame.setLocationRelativeTo(null);
         frame.add(gamepanel);
         gamepanel.requestFocusInWindow();
-        gamepanel.createButtons(frame, gamepanel);
+        gamepanel.createInventoryButton(gamepanel);
     }
     public static void main(String[] args)
     {

@@ -2,6 +2,7 @@ package com.codecool.rpg;
 
 import com.codecool.rpg.GameObjects.Characters.Player;
 import com.codecool.rpg.GameObjects.GameObject;
+import com.codecool.rpg.GameObjects.Items.Item;
 import com.codecool.rpg.map.Level;
 import com.codecool.rpg.map.LevelOne;
 
@@ -12,6 +13,8 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GamePanel extends JPanel implements Runnable {
@@ -72,9 +75,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
 
-
-
-
         //creating images
         BufferedImage playerImage = null;
         BufferedImage forestImage = null;
@@ -130,11 +130,26 @@ public class GamePanel extends JPanel implements Runnable {
         g.drawString("INT: " +Integer.toString(player.getIntelligence()), 645, STAT_SPACING*4);
     }
 
-    public void createButtons(JFrame frame, JPanel p) {
+    public void createInventoryButton(JPanel p) {
         JButton inventoryButton = new JButton("Inventory");
         p.setLayout(null);
         inventoryButton.setBounds(640, STAT_SPACING*5, 90, 30);
         p.add(inventoryButton);
+        inventoryButton.setRequestFocusEnabled(false);
+        inventoryButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame inventoryFrame = new JFrame();
+                inventoryFrame.setVisible(true);
+                inventoryFrame.setSize(500,500);
+                inventoryFrame.setLocationRelativeTo(null);
+
+                List<Item> items = player.getItems();
+                JList<String> labels = createLabels(items);
+                labels.setFont(new Font("TimesRoman", Font.BOLD, 20));
+                inventoryFrame.add(labels);
+            }
+        });
     }
 
     //arrow controls
@@ -192,5 +207,13 @@ public class GamePanel extends JPanel implements Runnable {
         public void actionPerformed(ActionEvent e) {
             level.move(player.getX() + 1, player.getY(), player);
         }
+    }
+
+    private JList<String> createLabels(List<Item> items){
+        DefaultListModel<String> itemList = new DefaultListModel<>();
+        for (Item item: items) {
+            itemList.addElement(item.getName());
+        }
+        return new JList<>(itemList);
     }
 }

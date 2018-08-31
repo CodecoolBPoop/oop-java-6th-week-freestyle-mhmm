@@ -9,6 +9,11 @@ import com.codecool.rpg.GameObjects.GameObjectType;
 import com.codecool.rpg.GameObjects.Items.Loot;
 import com.codecool.rpg.GameObjects.Wall;
 
+import javax.swing.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import static com.codecool.rpg.GameObjects.GameObjectType.FLOOR;
 import static com.codecool.rpg.GameObjects.GameObjectType.FOREST;
 
@@ -45,12 +50,26 @@ public abstract class Level {
             }
             case ENEMY: {
                 if (movingCharacter instanceof Player) {
+//                    Enemy enemy = null;
                     Player player = (Player) movingCharacter;
                     Enemy enemy = (Enemy) destination;
-                    player.takeDamage(enemy.attack());
-                    enemy.takeDamage(player.attack());
-                    if (enemy.getHitPoint() <= 0) {
-                        map[toX][toY] = new Loot(toX,toY);
+                    if (enemy.getHitPoint() > 0) {
+                        player.takeDamage(enemy.attack());
+                        enemy.takeDamage(player.attack());
+                        map[toX][toY] = player;
+                        Timer timer = new Timer(10, new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent arg0) {
+                                map[fromX][fromY] = player;
+                                map[toX][toY] = enemy;
+                                if (enemy.getHitPoint() <= 0) {
+                                    map[toX][toY] = new Loot(toX,toY);
+                                }
+                            }
+                        });
+                        timer.setRepeats(false);
+                        timer.start();
                     }
                     break;
                 }

@@ -20,4 +20,9 @@ public class Potion extends Item {
     public GameObjectType getBuffType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return this.getName() + "| Increases stat by " + this.buffValue;
+    }
 }

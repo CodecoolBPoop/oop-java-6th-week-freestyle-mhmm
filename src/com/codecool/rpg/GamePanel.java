@@ -191,7 +191,7 @@ public class GamePanel extends JPanel implements Runnable {
     private JList<String> createLabels(List<Item> items){
         DefaultListModel<String> itemList = new DefaultListModel<>();
         for (Item item: items) {
-            itemList.addElement(item.getName());
+            itemList.addElement(item.toString());
         }
         return new JList<>(itemList);
     }
@@ -199,7 +199,7 @@ public class GamePanel extends JPanel implements Runnable {
     private ActionListener equipActionListener(JList list) {
         return (event) ->{
                 String itemName = (String) list.getSelectedValue();
-                Item toEquip = player.getItemByName(itemName);
+                Item toEquip = player.getItemByName(itemName.split("\\|")[0]);
                 player.equipItem(toEquip);
         };
     }

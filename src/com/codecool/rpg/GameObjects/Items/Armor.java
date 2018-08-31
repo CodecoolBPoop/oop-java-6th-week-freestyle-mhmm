@@ -15,4 +15,9 @@ public class Armor extends Item {
     public int getHealthIncrease() {
         return healthIncrease;
     }
+
+    @Override
+    public String toString() {
+        return this.getName() + "| Increase hp by " + this.healthIncrease;
+    }
 }

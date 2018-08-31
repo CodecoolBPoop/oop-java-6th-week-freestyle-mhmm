@@ -41,4 +41,6 @@ public abstract class Item extends GameObject {
     public void setType(GameObjectType type){
         this.type = type;
     }
+
+    public abstract String toString();
 }

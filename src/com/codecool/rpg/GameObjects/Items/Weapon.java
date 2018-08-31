@@ -28,4 +28,9 @@ public class Weapon extends Item {
     public int getMaxDamage() {
         return this.maxDamage;
     }
+
+    @Override
+    public String toString() {
+        return this.getName() + "| dmg: " + this.minDamage + " - " + this.maxDamage;
+    }
 }

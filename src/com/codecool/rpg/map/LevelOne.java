@@ -8,6 +8,8 @@ import com.codecool.rpg.GameObjects.Floor;
 import com.codecool.rpg.GameObjects.GameObject;
 import com.codecool.rpg.GameObjects.GameObjectType;
 import com.codecool.rpg.GameObjects.Items.Item;
+import com.codecool.rpg.GameObjects.Items.Loot;
+import com.codecool.rpg.GameObjects.Items.Weapon;
 import com.codecool.rpg.GameObjects.Wall;
 
 public class LevelOne extends Level{
@@ -37,6 +39,10 @@ public class LevelOne extends Level{
         this.map[2][3] = new Slime(2,3, 15);
         this.map[1][9] = new Slime(1,9, 20);
         this.map[6][9] = new Slime(6,9, 40);
+
+        this.map[6][1] = new Loot(6,1);
+        this.map[6][10] = new Loot(6,10);
+
 
         placeWall(5,7,FOREST);
         placeWall(4,7,FOREST);

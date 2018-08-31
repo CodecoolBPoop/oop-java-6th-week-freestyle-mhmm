@@ -1,4 +1,5 @@
 package com.codecool.rpg.map;
+import com.codecool.rpg.Config;
 import com.codecool.rpg.GameObjects.Characters.Character;
 import com.codecool.rpg.GameObjects.Characters.Player;
 import com.codecool.rpg.GameObjects.Characters.enemy.Enemy;
@@ -59,6 +60,8 @@ public abstract class Level {
     }
 
     void generateBase(){
+        Config.initialize();
+
         for(int i = 0; i< WIDTH-1; i++){
             for (int j = 1; j<HEIGHT-1; j++) {
                 this.map[i][j] = new Floor(i, j, FLOOR);

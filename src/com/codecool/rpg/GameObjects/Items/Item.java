@@ -2,6 +2,7 @@ package com.codecool.rpg.GameObjects.Items;
 
 import com.codecool.rpg.GameObjects.Characters.Character;
 import com.codecool.rpg.GameObjects.GameObject;
+import com.codecool.rpg.GameObjects.GameObjectType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,5 +36,9 @@ public abstract class Item extends GameObject {
 
     public String getName() {
         return name;
+    }
+
+    public void setType(GameObjectType type){
+        this.type = type;
     }
 }
